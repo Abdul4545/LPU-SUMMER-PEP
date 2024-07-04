@@ -1,0 +1,89 @@
+.conatiner {
+    width: 400px;
+    margin: auto;
+    margin-top: 10vh;
+    border-radius: 30px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    padding-top: auto;
+    font-size: 2em;
+    font-style: normal;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.form {
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    margin: auto;
+}
+
+.name, .email, .password, .phone {
+    margin-top: 10px;
+    opacity: 0.7;
+}
+
+.name-input , .email-input , .password-input , .phone-input {
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    border-width: 0.5px;
+    background-color: rgb(247, 248, 249);
+    border: none;
+}
+
+.sign {
+    margin-top: 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(16, 185, 129);
+    color: white;
+    padding: 10px;
+    font-size: large;
+    cursor: pointer;
+}
+
+.or {
+    text-align: center;
+    margin: 8px;
+}
+
+.sign-up {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.sign-up > p {
+    margin-left: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.google-img {
+    margin-top: 0px;
+    width: 20px;
+}
+
+.login {
+    text-align: center;
+}
+
+.login > span {
+    color: rgb(16, 185, 129);
+    cursor: pointer;
+}
+

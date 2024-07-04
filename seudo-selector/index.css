@@ -1,0 +1,80 @@
+.btn {
+  background-color: rgb(34, 32, 32);
+  width: fit-content;
+  display: block;
+  font-size: 16px;
+  margin: 10px auto;
+  padding: 0.4em 1em;
+  color: white;
+  border: none;
+  opacity: 0.5;
+  transition: scale 500ms ease;
+}
+
+/* pseudo-class */
+.btn:hover {
+  opacity: 1;
+  cursor: pointer;
+  scale: 1.2;
+  background-color: black;
+}
+
+.btn-1 {
+  background-color: rgb(214, 72, 72);
+  width: fit-content;
+  display: block;
+  font-size: 16px;
+  margin: 10px auto;
+  padding: 0.4em 1em;
+  color: white;
+  border: none;
+  opacity: 0.5;
+  transition: cursor 3000 ease;
+}
+
+.btn-1:hover {
+  cursor: grab;
+  background-color: red;
+  scale: 1.2;
+}
+
+a {
+  color: red;
+  font-size: large;
+  transition: all 400 ease;
+}
+
+a:visited {
+  color: green;
+}
+
+ul {
+  font-size: 20px;
+  list-style: none;
+}
+
+ul :first-child {
+  color: rgb(255, 162, 0);
+}
+
+ul :nth-child(5) {
+  color: orange;
+}
+
+p:first-of-type {
+  color: blueviolet;
+}
+
+li:last-child {
+  color: rgb(119, 11, 227);
+}
+
+li:first-child {
+  color: brown;
+}
+
+/* ::after, ::before -> these are suodo elements */
+
+.seudo:hov::after {
+    content: "-Using sudo selector";
+}

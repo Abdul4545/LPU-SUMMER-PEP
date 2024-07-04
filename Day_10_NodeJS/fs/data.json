@@ -1,0 +1,23 @@
+[
+    {
+        "id":1,
+        "name":"Asaad",
+        "Math":78,
+        "Science":67
+    },
+
+    {
+        "id":2,
+        "name":"Zakiya",
+        "Math":88,
+        "Science":76
+    },
+    
+    {
+        "id":3,
+        "name":"Alfiya",
+        "Math":96,
+        "Science":87
+
+    }
+]

@@ -1,0 +1,35 @@
+.conatiner {
+  background-color: antiquewhite;
+  display: flex;
+  height: 300px;
+
+  align-items: center;
+  /* moves items center horizontally and removes stretch property */
+
+  justify-content: center;
+  /* centers item vertically */
+
+  /* justify-content: space-between; */
+  /* justify-content: space-around; */
+
+}
+
+.child {
+  background-color: aqua;
+  border: 1px solid black;
+  width: 100px;
+  padding: 10px;
+  /* flex-shrink: 0; */
+  /* none will shrink */
+}
+
+/* remaining part is divide in 3 part and given 1 part to child-2 and 2 part to search */
+
+/* .child-2 {
+  flex-grow: 1;
+}
+
+.search {
+  flex-grow: 2;
+  flex-shrink: 1;
+} */

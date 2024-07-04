@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    height: 600px;
+    background-color: yellow;
+    display: grid;
+    /* grid-template-columns: 30% 20% 35% 15%; */
+    /* grid-template-columns: 1fr 2fr 3fr 1fr; */
+     /* no of columns with size */
+     grid-template-columns: repeat(4, 100px);
+    
+    grid-auto-rows: 100px;  /* height of each row else it will be stretched */
+
+    row-gap: 10px;
+    column-gap: 10px;
+
+    align-content: center; /* aligns the rows vertically center */
+    justify-content: center; /* aligns the rows horizontally center */
+}
+
+
+.child {
+    border: 1px solid black;
+    background-color: aquamarine;
+    align-content: center;
+    text-align: center;
+}
+
+.child-2 {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 4;
+}
+
+.child-12 {
+    grid-column-start: 1;
+    grid-column-end: 5;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+
+    <link rel="stylesheet" href="./Login.css">
+</head>
+<body>
+
+    <div className='conatiner'>
+
+        <div className='form'>
+            <h1>Create an Account</h1>
+
+            <label htmlFor='name' className='name'>Full Name</label>
+            <input type="text" name='name' id='name' className='name-input'/>
+
+            <label htmlFor='email' className='email'>Email</label>
+            <input type="email" name="email" id="email" className='email-input' />
+
+            <label htmlFor='password' className='password'>Password</label>
+            <input type="password" name="password" id="password" className='password-input'/>
+
+            <label htmlFor="phone" className='phone'>Phone Number</label>
+            <input type="tel" name="phone" id="phone" className='phone-input'/>
+
+            <button type="submit" className='sign'>Sign Up</button>
+
+            <p className='or'>OR</p>
+
+            <button type="button" className='sign-up'><img src={google} alt="" srcset="" className='google-img' /><p>Sign Up with Google</p></button>
+
+            <p className='login'>Already have an Account? <span>Login</span></p>
+
+
+        </div>
+      
+    </div>
+    
+</body>
+</html>
