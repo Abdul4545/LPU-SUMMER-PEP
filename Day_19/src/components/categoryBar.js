@@ -1,7 +1,7 @@
 import React from 'react'
 import { GiHamburgerMenu } from "react-icons/gi";
 
-const categoryBar = (props) => {
+const CategoryBar = (props) => {
     const { categories } = props;
   return (
     <div>
@@ -24,4 +24,4 @@ const categoryBar = (props) => {
   )
 }
 
-export default categoryBar
+export default CategoryBar
