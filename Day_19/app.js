@@ -117,8 +117,6 @@ const categories = [
   "Fashion",
 ];
 
-
-
 const App = () => {
   const [searchText, setSearchText] = useState("");
   const router = createBrowserRouter([
