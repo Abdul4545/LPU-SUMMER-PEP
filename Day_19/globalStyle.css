@@ -269,7 +269,7 @@
   width: 100%;
 }
 .homepage-body > .products-cards-container {
-  top: -320px;
+  top: -340px;
   position: relative;
   margin: 0 16px;
   display: flex;
@@ -281,6 +281,7 @@
   background-color: white;
   flex-basis: 340px;
   flex-grow: 1;
+  height: 320px;
 }
 
 .products-info-card h3 {
@@ -431,4 +432,14 @@
 }
 .product-brand{
   color: #007195;
+}
+
+
+
+
+/* Styling Footer */
+
+.footer-container {
+  height: 300px;
+  background: #000;
 }
