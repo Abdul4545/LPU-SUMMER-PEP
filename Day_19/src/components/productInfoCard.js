@@ -1,6 +1,14 @@
+import { Link } from "react-router-dom";
+
+import { useContext } from "react";
+import AppContext from "../context/appContext";
+
 const ProductInfoCard = (props) => {
     const { data = [] } = props;
+    const contextData = useContext(AppContext);
+    console.log(contextData);
     return (
+        <>
         <div className="products-info-card">
 
             <h3>{data.title}</h3>
@@ -8,11 +16,17 @@ const ProductInfoCard = (props) => {
                 {data.map((elem) => (
                     <div className="products-item-card" >
                         <img src={elem.thumbnail} />
-                        <p>{elem.title}</p>
+                        <Link to = {`/search/${elem.id}`}>{elem.title}</Link>
                     </div>
                 ))}
             </div>
         </div>
+
+        <div>
+            {}
+        </div>
+
+        </>
     )
 }
 

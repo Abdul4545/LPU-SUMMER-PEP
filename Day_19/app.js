@@ -2,12 +2,18 @@ import ReactDOM from "react-dom/client";
 import "./globalStyle.css";
 import HomePage from "./src/Pages/homePage";
 import SearchPage from "./src/Pages/amazonSearchPage";
+import SignUp from "./src/Pages/signUp";
+
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
 import { useState } from "react";
+
+import AppContext from "./src/context/appContext";
+
 import ProductInfo from "./src/Pages/productInfo";
+import Login from "./src/Pages/login";
 const parent = document.getElementById("root");
 
 const root = ReactDOM.createRoot(parent);
@@ -119,23 +125,113 @@ const categories = [
 
 const App = () => {
   const [searchText, setSearchText] = useState("");
+  const [cart, setCart] = useState([])
+  const [loggedInUser, setLoggedInUser] = useState(null)
+
   const router = createBrowserRouter([
     {
       path:'/',
-      element:<HomePage searchText={searchText} setSearchText={setSearchText} productInfoCards={productInfoCards} categories={categories}/>
+      element:!loggedInUser ? <SignUp /> : <HomePage productInfoCards={productInfoCards} />
     },
+    
     {
       path:'/search',
-      element:<SearchPage searchText={searchText} setSearchText={setSearchText} categories={categories}/>
+      element: !loggedInUser ? <SignUp /> : <SearchPage />
     },
+
     {
       path:'/search/:id',
-      element:<ProductInfo/>
+      element: !loggedInUser ? <SignUp /> : <ProductInfo/>
+    },
+
+    {
+      path:'/signup',
+      element: loggedInUser ? <HomePage /> : <SignUp/>
+    },
+
+    {
+      path: "/login",
+      element: loggedInUser ? <HomePage /> :  <Login />
     }
+
   ]);
 
+  // const addToCart = (elem) => {
+  //   const isPresent = cart.findIndex((CartITEM) => CartITEM.id === elem.id);
+  //   if(isPresent === -1) {
+  //     const newCart = [...cart];
+  //     newCart.push({
+  //       title: elem.title,
+  //       id: elem.id,
+  //       price: elem.price,
+  //       count: 1,
+  //     });
+  //     setCart(newCart);
+  //   }
+
+  //   else {
+  //     let newCart = cart.map((cartItem) => {
+  //       if(cartItem.id === elem.id) {
+  //         const newCartItem = {...cartItem};
+  //         newCartItem.count = newCartItem.count + 1;
+  //         return newCartItem
+  //       }
+
+  //       else {
+  //         return cartItem
+  //       }
+  //     });
+  //     setCart(newCart);
+  //   }
+  // };
+
+
+
+  // console.log(cart);
+  
+
+  const addToCart = (elem)=>{
+    // check if product is already present in cart
+    const isPresent =cart.findIndex((cI)=>cI.id===elem.id);
+    if(isPresent===-1){
+      const newCart = [...cart];
+      newCart.push({
+        title:elem.title,
+        id:elem.id,
+        price:elem.price,
+        count:1
+      });
+      setCart(newCart);
+    }
+    else{
+      const newCart = cart.map((cartItem)=>{
+        if(cartItem.id==elem.id){
+          const newCartItem = {...cartItem};
+          newCartItem.count = newCartItem.count +1;
+          return newCartItem;
+        }
+        else{
+          return cartItem;
+        }
+      });
+      setCart(newCart);
+    }
+  }
+
+  const appLogin = (user) => {
+      setLoggedInUser(user)
+  }
+
+  const contextValues = {
+    searchText, setSearchText, categories, cart, addToCart, appLogin, loggedInUser
+  }
+
+  console.log(("state : ", loggedInUser));
+
   return(
-     <RouterProvider router={router}/>
+    <AppContext.Provider value={contextValues}>
+      <RouterProvider router={router}/>
+    </AppContext.Provider>
   );
 };
 

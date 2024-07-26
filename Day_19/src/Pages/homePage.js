@@ -7,21 +7,25 @@ import { useNavigate } from "react-router-dom";
 import useGetProducts from "../hooks/useGetProducts";
 
 
-const HomePage = (props) => {
-    const { productInfoCards, categories, setSearchText, searchText } = props;
+const HomePage = () => {
+    // const { productInfoCards, categories, setSearchText, searchText } = props;
   const navigate = useNavigate();
 
-  
-  const product = useGetProducts();
-  let count = 0;
+  const product = useGetProducts({isSearchTextDependent: false});
+  let cnt = 0;
   const reqLength = 16;
 
-  const filteredProducts = product.filter((element, idx) => {
-    if(Math.random() >= 0.5 || (reqLength - count) >= (product.length-idx)) {
-      count++;
-      return true
+  const filteredProducts = product.filter((elem, idx) => {
+    if (Math.random() >= 0.5 || reqLength - cnt >= product.length - idx) {
+      if (cnt < reqLength) {
+        cnt++;
+        return true;
+      } else {
+        return false;
+      }
     } else return false;
-  })
+  });
+
 
   console.log("filteredProducts : ", filteredProducts);
 
@@ -32,8 +36,8 @@ const HomePage = (props) => {
   
   return (
     <div className="homepage-root-container">
-      <Navbar setSearchText={setSearchText} openSearchPage={openSearchPage} searchText={searchText} />
-      <CategoryBar categories={categories} />
+      <Navbar openSearchPage={openSearchPage} />
+      <CategoryBar />
       <div className="homepage-body">
         <img
           className="carousal-image"
@@ -45,7 +49,7 @@ const HomePage = (props) => {
           {[...Array(4).keys()].map((element) => {
               return <ProductInfoCard data = {filteredProducts.slice(element * 4, element * 4 + 4)} />
           })}
-
+          
         </div>
       </div>
 

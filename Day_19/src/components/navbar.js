@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { IoSearchSharp } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import AppContext from "../context/appContext";
 
-const Navbar = ({ setSearchText, openSearchPage, searchText }) => {
+const Navbar = ({openSearchPage}) => {
+  const { searchText, setSearchText } = useContext(AppContext)
+
   const navigate = useNavigate();
+
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       if(e.target.value!==""){
-        openSearchPage();
+        // openSearchPage();
       }
     }
   };
@@ -15,9 +19,11 @@ const Navbar = ({ setSearchText, openSearchPage, searchText }) => {
   const handleSearch = (e) => {
     setSearchText(e.target.value);
   };
+  
   const handleLogoClick = () => {
     navigate('/'); 
   };
+
   return (
     <nav className="homepage-nav">
       <h4 onClick={handleLogoClick} style={{ cursor: 'pointer' }}>Amazon.in</h4>

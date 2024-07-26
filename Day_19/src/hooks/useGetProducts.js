@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 
-const useGetProducts = (searchText = "") => {
+import AppContext from '../context/appContext';
+
+const useGetProducts = ({isSearchTextDependent = true}) => {
+    const {searchText} = useContext(AppContext);
+
     const [products, setProducts] = useState([]);
-    async function getData() {
+    
+    async function getData(stx) {
         try {
-            const res = await fetch(`https://dummyjson.com/products/search?q=${searchText}`);
+            const res = await fetch(`https://dummyjson.com/products/search?q=${stx}`);
             const data = await res.json();
             setProducts(data.products);
             
@@ -14,7 +19,15 @@ const useGetProducts = (searchText = "") => {
     }
 
     useEffect(() => {
-        getData();
+
+        if(isSearchTextDependent) {
+            getData(searchText);
+        }
+
+        else {
+            getData("");
+        }
+
     }, [searchText])
 
     return products;
