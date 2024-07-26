@@ -1,4 +1,5 @@
 require("dotenv").config()
+const path = require("path")
 require("./config/db.js")
 const authRouter = require("./routes/authRoutes.js")
 const express = require("express")
@@ -12,6 +13,8 @@ const fileRouter = require("./routes/fileRoutes.js")
 const app = express();
 app.use(cors({origin: true}))
 app.use(express.json())
+app.use(express.static(path.join(__dirname, "public")));
+
 
 app.get("/", (req, res) => {
     res.setEncoding("App is running");
